@@ -1,0 +1,32 @@
+nav {
+  display: flex;
+  font-family: 'Bungee', sans-serif;
+  background-color: #4056A1;
+  justify-content: space-between;
+  height: 120px;
+}
+
+#header-logo {
+  color: #FFFFFF;
+  margin-left: 1.5em;
+  align-self: center;
+  font-size: 1.5em;
+}
+
+.new-tweet {
+  color: #FFFFFF;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-right: 1.5em;
+  align-self: center;
+}
+
+.header-tweet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fas {
+  color: firebrick;
+  align-self: center;
+}
