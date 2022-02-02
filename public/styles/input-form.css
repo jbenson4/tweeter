@@ -9,6 +9,7 @@ button {
   font-family: 'Bungee', sans-serif;
   color: #FFFFFF;
   flex-direction: row;
+  align-items: center;
 }
 
 div.button {
