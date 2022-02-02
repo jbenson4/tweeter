@@ -6,6 +6,13 @@ $(document).ready(function() {
     const counter = $(parent).find('.counter');
 
     counter.text(charRemaining);
+
+    if (charRemaining < 0) {
+      counter.addClass('overChar');
+    }
+    if (charRemaining >= 0) {
+      counter.removeClass('overChar');
+    }
   })
 
 });

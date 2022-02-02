@@ -21,6 +21,10 @@ div.button {
   font-family: 'Bungee', sans-serif;
 }
 
+.overChar {
+  color: red;
+}
+
 form {
   flex-direction: column;
 }
@@ -36,10 +40,8 @@ form {
   resize: none;
   border-bottom: 5px #59554d;
   border-bottom-style: solid;
-
 }
 
-::placeholder {
-  font-family: 'Source Sans Pro', sans-serif;
+label {
   font-weight: bold;
 }
