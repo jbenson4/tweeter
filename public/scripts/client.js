@@ -6,43 +6,43 @@
 
 $(document).ready(function() {
   
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ]
+  // const data = [
+  //   {
+  //     "user": {
+  //       "name": "Newton",
+  //       "avatars": "https://i.imgur.com/73hZDYK.png"
+  //       ,
+  //       "handle": "@SirIsaac"
+  //     },
+  //     "content": {
+  //       "text": "If I have seen further it is by standing on the shoulders of giants"
+  //     },
+  //     "created_at": 1461116232227
+  //   },
+  //   {
+  //     "user": {
+  //       "name": "Descartes",
+  //       "avatars": "https://i.imgur.com/nlhLi3I.png",
+  //       "handle": "@rd" },
+  //     "content": {
+  //       "text": "Je pense , donc je suis"
+  //     },
+  //     "created_at": 1461113959088
+  //   }
+  // ]
   
-  const renderTweets = function(tweets) {
-    tweets.forEach((data) => {
-      const $tweet = createTweetElement(data);
-      $('#tweets-container').append($tweet);
-    });
-  }
+  // const renderTweets = function(tweets) {
+  //   tweets.forEach((data) => {
+  //     const $tweet = createTweetElement(data);
+  //     $('#tweets-container').append($tweet);
+  //   });
+  // }
 
   const createTweetElement = function(tweetObj) {
   
     const timeSince = timeago.format(tweetObj.created_at);
 
-    const $tweet = $(`
+    const $tweetElements = $(`
     <article class="tweets-container">
       <header class="tweet-header">
         <div id="avatar-and-name">
@@ -64,7 +64,38 @@ $(document).ready(function() {
     </article>
     `);
 
-    return $tweet;
+    return $tweetElements;
   }
-  renderTweets(data);
+
+  // renderTweets(data);
+
+  const fetchTweets = () => {
+    $.ajax({
+      url: '/tweets',
+      method: 'GET', 
+    }).then((data) => {
+      $('#tweets-container').empty();
+      data.forEach((tweet) => {
+        const $tweet = createTweetElement(tweet);
+        $('#tweets-container').append($tweet);
+      })
+    });
+  }
+
+  fetchTweets();
+
+  $('#submit-tweet').on('submit', function(event) {
+    event.preventDefault();
+    const data = $(this).serialize();
+
+    $.ajax({
+      url: '/tweets',
+      method: 'POST',
+      data,
+    }).then(() => {
+      fetchTweets();
+    })
+
+  });
+  
 });
