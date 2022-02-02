@@ -6,39 +6,7 @@
 
 $(document).ready(function() {
   
-  // const data = [
-  //   {
-  //     "user": {
-  //       "name": "Newton",
-  //       "avatars": "https://i.imgur.com/73hZDYK.png"
-  //       ,
-  //       "handle": "@SirIsaac"
-  //     },
-  //     "content": {
-  //       "text": "If I have seen further it is by standing on the shoulders of giants"
-  //     },
-  //     "created_at": 1461116232227
-  //   },
-  //   {
-  //     "user": {
-  //       "name": "Descartes",
-  //       "avatars": "https://i.imgur.com/nlhLi3I.png",
-  //       "handle": "@rd" },
-  //     "content": {
-  //       "text": "Je pense , donc je suis"
-  //     },
-  //     "created_at": 1461113959088
-  //   }
-  // ]
-  
-  // const renderTweets = function(tweets) {
-  //   tweets.forEach((data) => {
-  //     const $tweet = createTweetElement(data);
-  //     $('#tweets-container').append($tweet);
-  //   });
-  // }
-
-  const createTweetElement = function(tweetObj) {
+   const createTweetElement = function(tweetObj) {
   
     const timeSince = timeago.format(tweetObj.created_at);
 
@@ -67,9 +35,7 @@ $(document).ready(function() {
     return $tweetElements;
   }
 
-  // renderTweets(data);
-
-  const fetchTweets = () => {
+  const renderTweets = () => {
     $.ajax({
       url: '/tweets',
       method: 'GET', 
@@ -82,20 +48,25 @@ $(document).ready(function() {
     });
   }
 
-  fetchTweets();
+  renderTweets();
 
   $('#submit-tweet').on('submit', function(event) {
     event.preventDefault();
     const data = $(this).serialize();
-
+    const tweetLength = data.substring(5).length;
+    if (tweetLength === 0) {
+      return alert("You've submitted an empty string!");
+    }
+    if (tweetLength > 140) {
+      return alert("Your tweet is too long!");
+    }
     $.ajax({
       url: '/tweets',
       method: 'POST',
       data,
     }).then(() => {
-      fetchTweets();
+      renderTweets();
     })
-
   });
   
 });
