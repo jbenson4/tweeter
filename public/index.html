@@ -20,6 +20,7 @@
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
@@ -57,25 +58,7 @@
           </div>
         </form>
       </section>
-      <article class="posted-tweets">
-        <header class="tweet-header">
-          <div id="avatar-and-name">
-            <img src="/images/avatar.png"/>
-            <p id="name">Anne Yu</p>
-          </div>
-          <p id="handle">@QueenKulit</p>
-        </header>
-          <p id="tweet">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima, quos.</p>
-          <div class="tweet-underline"></div>
-        <footer class="tweet-footer">
-          <p>10 days ago</p>
-          <div id="links">
-            <i class="fas fa-flag"></i>
-            <i class="fas fa-retweet"></i>
-            <i class="fas fa-heart"></i>
-          </div>
-        </footer>
-      </article>
+      <div id=tweets-container></div>
     </main>
   </body>
 </html>
