@@ -1,8 +1,10 @@
 $(document).ready(function() {
-  
+  // Hide error container on page load
   $('.submit-error').slideUp(1);
+  // Hide new tweet form on page load
+  $('form').slideUp(1);
 
-   const createTweetElement = function(tweetObj) {
+  const createTweetElement = function(tweetObj) {
   
     const timeSince = timeago.format(tweetObj.created_at);
 
@@ -10,7 +12,7 @@ $(document).ready(function() {
       let div = document.createElement("div");
       div.appendChild(document.createTextNode(str));
       return div.innerHTML;
-    }
+    };
     
     const $tweetElements = $(`
     <article class="tweets-container">
@@ -33,10 +35,9 @@ $(document).ready(function() {
       </footer>
     </article>
     `);
-
     return $tweetElements;
   }
-
+// GET request page render
   const renderTweets = () => {
     $.ajax({
       url: '/tweets',
@@ -48,10 +49,10 @@ $(document).ready(function() {
         $('#tweets-container').prepend($tweet);
       })
     });
-  }
-
+  };
+// Initial page render function call
   renderTweets();
-
+// Tweet submission eventListeners
   $('#submit-tweet').on('submit', function(event) {
     event.preventDefault();
     const data = $(this).serialize();
@@ -79,5 +80,13 @@ $(document).ready(function() {
       $('form').trigger('reset');
     })
   });
+  
+  $('.nav-tweet').on('click', (event) => {
+    if ($('form').is(':visible')) {
+     return $('form').slideUp(400);
+    };
+    $('form').slideDown(400);
+    $('#tweet-text').focus();
+  })
   
 });

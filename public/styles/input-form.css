@@ -53,6 +53,7 @@ div.button {
 
 form {
   flex-direction: column;
+  padding-top: 2em;
 }
 
 #tweet-text {
