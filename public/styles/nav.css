@@ -31,7 +31,7 @@ nav {
   justify-content: center;
 }
 
-.fas {
+.fas.fa-angle-double-down {
   color: firebrick;
   align-self: center;
   margin-right: 1.5em;
