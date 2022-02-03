@@ -28,7 +28,6 @@
   </head>
 
   <body>
-    <!-- Top nav bar (fixed) -->
     <nav>
       <span id="header-logo">Tweeter</span>
       <div class="header-tweet">
@@ -40,13 +39,16 @@
       <div>
         <img src="/images/profile-hex.png"> 
       </div>
-      <!-- <br> -->
       <div class="name">
         <h2>Anne Yu</h2>
       </div>
     </header>
-    <!-- Page-specific (main) content here -->
     <main class="container">
+      <div class="submit-error">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p id="error-message"></p>
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
       <section class="tweet-form">
         <h2>Compose Tweet</h2>
         <form method='POST' action="/tweets" id="submit-tweet">

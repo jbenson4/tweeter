@@ -26,6 +26,31 @@ div.button {
   color: red;
 }
 
+.submit-error {
+  display: flex;
+  color: firebrick;
+  font-weight: bold;
+  text-align: center;
+  border-color: #d3a211;
+  border-width: 5px;
+  border-style: solid;
+  margin-top: 1.5em;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.fas.fa-exclamation-triangle {
+  color: firebrick;
+  align-items: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 1em auto;
+}
+
+.error-true {
+  display: none;
+}
+
 form {
   flex-direction: column;
 }
@@ -41,6 +66,7 @@ form {
   resize: none;
   border-bottom: 5px #59554d;
   border-bottom-style: solid;
+  font-weight: bold;
 }
 
 label {
