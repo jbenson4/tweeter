@@ -30,8 +30,8 @@
   <body>
     <nav>
       <span id="header-logo">Tweeter</span>
-      <div class="header-tweet">
-        <span class="new-tweet"><strong>Write</strong> a new tweet</span>
+      <div class="nav-tweet">
+        <span class="nav-tweet-toggle"><strong>Write</strong> a new tweet</span>
         <i class="fas fa-angle-double-down"></i>
       </div>
     </nav>
@@ -50,7 +50,6 @@
         <i class="fas fa-exclamation-triangle"></i>
       </div>
       <section class="tweet-form">
-        <h2>Compose Tweet</h2>
         <form method='POST' action="/tweets" id="submit-tweet">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
