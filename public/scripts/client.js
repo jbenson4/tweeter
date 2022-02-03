@@ -1,22 +1,30 @@
 $(document).ready(function() {
   
+  $('.submit-error').slideUp(1);
+
    const createTweetElement = function(tweetObj) {
   
     const timeSince = timeago.format(tweetObj.created_at);
 
+    const escape = function(str) {
+      let div = document.createElement("div");
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    }
+    
     const $tweetElements = $(`
     <article class="tweets-container">
       <header class="tweet-header">
         <div id="avatar-and-name">
-        <img src="${tweetObj.user.avatars}" />
-        <p id="name">${tweetObj.user.name}</p>
+        <img src="${escape(tweetObj.user.avatars)}" />
+        <p id="name">${escape(tweetObj.user.name)}</p>
         </div>
-        <p id="handle">${tweetObj.user.handle}</p>
+        <p id="handle">${escape(tweetObj.user.handle)}</p>
       </header>
-        <p id="tweet">${tweetObj.content.text}</p>
+        <p id="tweet">${escape(tweetObj.content.text)}</p>
         <div class="tweet-underline"></div>
       <footer class="tweet-footer">
-        <p>${timeSince}</p>
+        <p>${escape(timeSince)}</p>
         <div id="links">
           <i class="fas fa-flag"></i>
           <i class="fas fa-retweet"></i>
@@ -37,7 +45,7 @@ $(document).ready(function() {
       $('#tweets-container').empty();
       data.forEach((tweet) => {
         const $tweet = createTweetElement(tweet);
-        $('#tweets-container').append($tweet);
+        $('#tweets-container').prepend($tweet);
       })
     });
   }
@@ -48,11 +56,19 @@ $(document).ready(function() {
     event.preventDefault();
     const data = $(this).serialize();
     const tweetLength = data.substring(5).length;
+
     if (tweetLength === 0) {
-      return alert("You've submitted an empty string!");
+      const error = $('#error-message');
+      error.text('Too short. Plz tweet something before submitting. #kthxbye.');
+      $('.submit-error').slideDown(500);
+      // error.addClass('error-true');
+      // return alert("You've submitted an empty string!");
     }
     if (tweetLength > 140) {
-      return alert("Your tweet is too long!");
+      const error = $('#error-message');
+      error.text('Too long. Plz rspct our arbitrary limit of 140 chars. #kthxbye.');
+      $('.submit-error').slideDown(500);
+      // return alert("Your tweet is too long!");
     }
     $.ajax({
       url: '/tweets',
@@ -60,6 +76,7 @@ $(document).ready(function() {
       data,
     }).then(() => {
       renderTweets();
+      $('form').trigger('reset');
     })
   });
   
