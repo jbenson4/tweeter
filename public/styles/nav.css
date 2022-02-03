@@ -17,7 +17,7 @@ nav {
   padding-top: 48px;
 }
 
-.new-tweet {
+.nav-tweet-toggle {
   color: #FFFFFF;
   font-family: 'Source Sans Pro', sans-serif;
   margin-right: 1.5em;
@@ -25,7 +25,7 @@ nav {
   align-self: center;
 }
 
-.header-tweet {
+.nav-tweet {
   display: flex;
   flex-direction: column;
   justify-content: center;
