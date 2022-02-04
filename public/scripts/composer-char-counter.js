@@ -13,6 +13,6 @@ $(document).ready(function() {
     if (charRemaining >= 0) {
       counter.removeClass('overChar');
     }
-  })
+  });
 
 });

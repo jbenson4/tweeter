@@ -1,5 +1,4 @@
 .tweet-form {
-  /* display: flex; */
   margin: 0 auto;
   justify-content: space-between;
 }
@@ -15,7 +14,7 @@ button {
 div.button {
   display: flex;
   justify-content: space-between;
-  margin-top: 12px;
+  margin-top: 0.5em;
 }
 
 .counter {
@@ -32,7 +31,7 @@ div.button {
   font-weight: bold;
   text-align: center;
   border-color: #d3a211;
-  border-width: 5px;
+  border-width: 0.2em;
   border-style: solid;
   margin-top: 1.5em;
   justify-content: space-around;
@@ -59,13 +58,14 @@ form {
 #tweet-text {
   background-color: #f4f1ec;
   width: 100%;
+  color: #59554d;
   border-top-style: hidden;
   border-left-style: hidden;
   border-right-style: hidden;
-  border-left-width: 5px;
+  border-left-width: 0.2em;
   outline: none;
   resize: none;
-  border-bottom: 5px #59554d;
+  border-bottom: 0.2em #59554d;
   border-bottom-style: solid;
   font-weight: bold;
 }
