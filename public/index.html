@@ -3,6 +3,7 @@
   <head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
@@ -32,34 +33,35 @@
       <span id="header-logo">Tweeter</span>
       <div class="nav-tweet">
         <span class="nav-tweet-toggle"><strong>Write</strong> a new tweet</span>
-        <i class="fas fa-angle-double-down"></i>
+        <i class="fas fa-angle-double-down fa-lg"></i>
       </div>
     </nav>
-    <header class="user-header">
-      <div>
-        <img src="/images/profile-hex.png"> 
-      </div>
-      <div class="name">
-        <h2>Anne Yu</h2>
-      </div>
-    </header>
-    <main class="container">
-      <div class="submit-error">
-        <i class="fas fa-exclamation-triangle"></i>
-        <p id="error-message"></p>
-        <i class="fas fa-exclamation-triangle"></i>
-      </div>
-      <section class="tweet-form">
-        <form method='POST' action="/tweets" id="submit-tweet">
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text"></textarea>
-          <div class="button">
-            <button type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-      </section>
-      <div id=tweets-container></div>
-    </main>
-  </body>
-</html>
+    <div class="body-container">
+      <header class="user-header">
+        <div>
+          <img src="/images/profile-hex.png"> 
+        </div>
+        <div>
+          <h2>Anne Yu</h2>
+        </div>
+      </header>
+      <main class="container">
+        <div class="submit-error">
+          <i class="fas fa-exclamation-triangle"></i>
+          <p id="error-message"></p>
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <section>
+          <form method='POST' action="/tweets" id="submit-tweet">
+            <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+            <div class="button">
+              <button type="submit">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text">140</output>
+            </div>
+          </form>
+        </section>
+        <div id=tweets-container></div>
+      </main>
+    </div>
+    </body>
+    </html>
