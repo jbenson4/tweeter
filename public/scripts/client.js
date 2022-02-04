@@ -18,8 +18,8 @@ $(document).ready(function() {
     <article class="tweets-container">
       <header class="tweet-header">
         <div id="avatar-and-name">
-        <img src="${escape(tweetObj.user.avatars)}" />
-        <p id="name">${escape(tweetObj.user.name)}</p>
+        <img id="avatar" src="${escape(tweetObj.user.avatars)}" />
+        <p id="tweet-name">${escape(tweetObj.user.name)}</p>
         </div>
         <p id="handle">${escape(tweetObj.user.handle)}</p>
       </header>
@@ -28,31 +28,34 @@ $(document).ready(function() {
       <footer class="tweet-footer">
         <p>${escape(timeSince)}</p>
         <div id="links">
-          <i class="fas fa-flag"></i>
-          <i class="fas fa-retweet"></i>
-          <i class="fas fa-heart"></i>
+          <i class="fas fa-flag link"></i>
+          <i class="fas fa-retweet link"></i>
+          <i class="fas fa-heart link"></i>
         </div>
       </footer>
     </article>
     `);
     return $tweetElements;
-  }
-// GET request page render
+  };
+  
+  // GET request page render
   const renderTweets = () => {
     $.ajax({
       url: '/tweets',
-      method: 'GET', 
+      method: 'GET',
     }).then((data) => {
       $('#tweets-container').empty();
       data.forEach((tweet) => {
         const $tweet = createTweetElement(tweet);
         $('#tweets-container').prepend($tweet);
-      })
+      });
     });
   };
-// Initial page render function call
+
+  // Initial page render function call
   renderTweets();
-// Tweet submission eventListeners
+
+  // Tweet submission eventListeners
   $('#submit-tweet').on('submit', function(event) {
     event.preventDefault();
     const data = $(this).serialize();
@@ -62,14 +65,11 @@ $(document).ready(function() {
       const error = $('#error-message');
       error.text('Too short. Plz tweet something before submitting. #kthxbye.');
       $('.submit-error').slideDown(500);
-      // error.addClass('error-true');
-      // return alert("You've submitted an empty string!");
     }
     if (tweetLength > 140) {
       const error = $('#error-message');
       error.text('Too long. Plz rspct our arbitrary limit of 140 chars. #kthxbye.');
       $('.submit-error').slideDown(500);
-      // return alert("Your tweet is too long!");
     }
     $.ajax({
       url: '/tweets',
@@ -78,15 +78,17 @@ $(document).ready(function() {
     }).then(() => {
       renderTweets();
       $('form').trigger('reset');
-    })
+      $('.counter').val('140');
+    });
   });
   
+  // Form sliding eventListener
   $('.nav-tweet').on('click', (event) => {
     if ($('form').is(':visible')) {
-     return $('form').slideUp(400);
-    };
+      return $('form').slideUp(400);
+    }
     $('form').slideDown(400);
     $('#tweet-text').focus();
-  })
+  });
   
 });
