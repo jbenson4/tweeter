@@ -1,28 +1,29 @@
-main {
-  width: 90%;
-  background-color: #f4f1ec;
-  margin: 0 auto;
-  color: #59554d;
-}
-
+/* Tweet Container */
 article {
   border: #59554d;
-  border-width: 5px;
+  border-width: 0.2em;
   border-style: solid;
-  margin-top: 50px;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 article:hover {
-  box-shadow: 5px 5px 0.1px #d1cfcc;
+  box-shadow: 0.2em 0.2em 0.1px #d1cfcc;
 }
 
 .tweet-header {
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   font-weight: bold;
   padding-bottom: 1em;
+}
+
+#avatar {
+  width: 3em;
+  height: 3em;
+  margin: 0.5em;
 }
 
 #avatar-and-name {
@@ -32,14 +33,14 @@ article:hover {
   justify-content: space-evenly;
 }
 
-#name {
-  padding-left: 0.5em;
-  padding-top: 0.5em;
+#tweet-name {
+  padding: 0.5em;
 }
 
 #handle {
   color: #d1cfcc;
   padding-top: 1em;
+  padding-right: 0.5em;
 }
 
 article:hover {
@@ -47,7 +48,6 @@ article:hover {
 }
 
 #tweet {
-  /* margin-left: 2em; */
   width: 90%;
   font-weight: bold;
   margin: 0 auto;
@@ -56,9 +56,10 @@ article:hover {
 .tweet-underline {
   width: 95%;
   margin: 0 auto;
+  padding-top: 1em;
   padding-bottom: 0.5em;
   border: #59554d;
-  border-width: 5px;
+  border-width: 0.2em;
   border-style: solid;
   border-top-style: hidden;
   border-left-style: hidden;
@@ -75,33 +76,48 @@ article:hover {
 }
 
 #links {
+  color: #4056A1;
   margin-top: 0.75em;
 }
 
-#links:hover {
-  color: #d3a211;
-}
-
-.fas.fa-flag {
-  color: #4056A1;
+.link {
+  padding: 0.1em;
 }
 
 .fas.fa-flag:hover {
   color: #d3a211;
 }
 
-.fas.fa-retweet {
-  color: #4056A1;
-}
-
 .fas.fa-retweet:hover {
   color: #d3a211;
 }
 
-.fas.fa-heart {
-  color: #4056A1;
-}
-
 .fas.fa-heart:hover {
   color: #d3a211;
+}
+
+/* Mobile */
+@media only screen and (max-width: 1024px) {
+  main {
+    width: 90%;
+    background-color: #f4f1ec;
+    margin: 0 auto;
+    color: #59554d;
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width: 1024px) {
+  .body-container {
+    display: flex;
+    /* flex-flow: row wrap; */
+  }
+  
+  main {
+    width: 67%;
+    background-color: #f4f1ec;
+    margin: 0 auto;
+    padding: 2em;
+    color: #59554d;
+  }
 }

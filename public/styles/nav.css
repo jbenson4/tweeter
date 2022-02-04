@@ -1,38 +1,75 @@
-nav {
-  display: flex;
-  font-family: 'Bungee', sans-serif;
-  background-color: #4056A1;
-  justify-content: space-between;
-  height: 120px;
-  position: sticky;
-  top: 0;
-  z-index: 2;
-}
-
 #header-logo {
   color: #FFFFFF;
-  margin-left: 1.5em;
+  margin-left: 3rem;
   align-self: center;
   font-size: 1.5em;
-  padding-top: 48px;
+  padding-top: 0.5em;
 }
 
 .nav-tweet-toggle {
   color: #FFFFFF;
   font-family: 'Source Sans Pro', sans-serif;
   margin-right: 1.5em;
-  padding-top: 36px;
+  padding-top: 2em;
   align-self: center;
+  cursor: default;
 }
 
 .nav-tweet {
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .fas.fa-angle-double-down {
   color: firebrick;
   align-self: center;
-  margin-right: 1.5em;
+  margin-right: 1.3em;
+  position: relative;
+  top: 0.5em;
+  animation-duration: 2s;
+  animation-name: bounce;
+  animation-iteration-count: infinite;
+}  
+
+/* Animation */
+@keyframes bounce {
+  from {
+    padding-top: 0em;
+  }
+  50% {
+    padding-top: 0.25em;
+  }
+  to {
+    padding-top: 0em;
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 1024px) {
+  nav {
+    display: flex;
+    font-family: 'Bungee', sans-serif;
+    background-color: #d3a211;
+    justify-content: space-between;
+    height: 120px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width: 1024px) {
+  nav {
+    display: flex;
+    font-family: 'Bungee', sans-serif;
+    background-color: #4056A1;
+    justify-content: space-between;
+    height: 120px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
 }
