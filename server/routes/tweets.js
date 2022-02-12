@@ -7,7 +7,9 @@ const tweetsRoutes  = express.Router();
 
 module.exports = function(DataHelpers) {
 
-  tweetsRoutes.get("/", function(req, res) {
+// Handle GET requests with router
+
+  tweetsRoutes.get("/", function(req, res) {  // 
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
         res.status(500).json({ error: err.message });
@@ -16,6 +18,8 @@ module.exports = function(DataHelpers) {
       }
     });
   });
+  
+// Handle POST requests with router
 
   tweetsRoutes.post("/", function(req, res) {
     if (!req.body.text) {
@@ -23,8 +27,8 @@ module.exports = function(DataHelpers) {
       return;
     }
 
-    const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
-    const tweet = {
+    const user = req.body.user ? req.body.user : userHelper.generateRandomUser();  // If user exists, return user. Otherwise, generate random user
+    const tweet = {  // Create tweet object from request body
       user: user,
       content: {
         text: req.body.text
@@ -32,7 +36,7 @@ module.exports = function(DataHelpers) {
       created_at: Date.now()
     };
 
-    DataHelpers.saveTweet(tweet, (err) => {
+    DataHelpers.saveTweet(tweet, (err) => {  // Pass tweet data to helper function 
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
