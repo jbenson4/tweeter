@@ -51,6 +51,7 @@ article:hover {
   width: 90%;
   font-weight: bold;
   margin: 0 auto;
+  word-wrap: break-word;
 }
 
 .tweet-underline {
@@ -94,6 +95,19 @@ article:hover {
 
 .fas.fa-heart:hover {
   color: #d3a211;
+}
+
+#return-to-top {
+  color: firebrick;
+  z-index: 2;
+  position: fixed;
+  right: 0.3em;
+  bottom: 0.3em;
+  filter: drop-shadow(1px 1px 1px #59554d);
+}
+
+.hidden {
+  display: none;
 }
 
 /* Mobile */
