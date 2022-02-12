@@ -65,11 +65,13 @@ $(document).ready(function() {
       const error = $('#error-message');
       error.text('Too short. Plz tweet something before submitting. #kthxbye.');
       $('.submit-error').slideDown(500);
+      return;
     }
     if (tweetLength > 140) {
       const error = $('#error-message');
       error.text('Too long. Plz rspct our arbitrary limit of 140 chars. #kthxbye.');
       $('.submit-error').slideDown(500);
+      return;
     }
     $.ajax({
       url: '/tweets',
@@ -77,6 +79,7 @@ $(document).ready(function() {
       data,
     }).then(() => {
       renderTweets();
+      $('.submit-error').slideUp(500);
       $('form').trigger('reset');
       $('.counter').val('140');
     });
